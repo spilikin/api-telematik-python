@@ -9,7 +9,7 @@ client = Client('./wsdl/r1.6.4/conn/AuthSignatureService.wsdl')
 
 service = client.create_service(
     '{http://ws.gematik.de/conn/AuthSignatureService/WSDL/v7.4}AuthSignatureServiceBinding',
-    'http://localhost:8080/soap-api/AuthSignatureService/7.4')
+    'http://localhost:9095/soap-api/AuthSignatureService/7.4.0')
 
 response = service.ExternalAuthenticate(
     CardHandle='unknown card handle',
@@ -24,4 +24,5 @@ response = service.ExternalAuthenticate(
     }
 )
 
-print response.SignatureObject.Base64Signature._value_1
+result = base64.b64decode(response.SignatureObject.Base64Signature._value_1)
+print result
