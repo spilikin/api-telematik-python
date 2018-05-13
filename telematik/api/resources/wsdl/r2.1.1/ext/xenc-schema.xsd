@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- gematik revision="\main\rel_online\1" -->
+<!--
 <!DOCTYPE schema  PUBLIC "-//W3C//DTD XMLSchema 200102//EN"
  "http://www.w3.org/2001/XMLSchema.dtd"
  [
@@ -10,7 +11,7 @@
    <!ENTITY % p ''>
    <!ENTITY % s ''>
   ]>
-
+-->
 <schema xmlns='http://www.w3.org/2001/XMLSchema' version='1.0'
         xmlns:xenc='http://www.w3.org/2001/04/xmlenc#'
         xmlns:ds='http://www.w3.org/2000/09/xmldsig#'
@@ -33,7 +34,7 @@
     <attribute name='MimeType' type='string' use='optional'/>
     <attribute name='Encoding' type='anyURI' use='optional'/>
   </complexType>
-  
+
   <complexType name='EncryptionMethodType' mixed='true'>
     <sequence>
       <element name='KeySize' minOccurs='0' type='xenc:KeySizeType'/>
@@ -144,4 +145,3 @@
     </complexType>
 
 </schema>
-
