@@ -1,1 +1,3 @@
-zeep==2.5.0
+git+git://github.com/mvantellingen/python-zeep@master
+#zeep==2.5.0
+pretend==1.0.9

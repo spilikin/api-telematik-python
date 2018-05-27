@@ -2,6 +2,7 @@ from urllib.parse import urlunparse
 import requests
 import xml.etree.ElementTree as xml
 from zeep import Client as SOAPClient
+from zeep.settings import Settings as SOAPSettings
 import os
 import base64
 
@@ -20,6 +21,9 @@ class Client(object):
             'ClientSystemId': client_system_id,
             'WorkplaceId': workplace_id
         }
+        self.soap_settings = SOAPSettings()
+        self.soap_settings.forbid_entities = False
+        self.soap_settings.strict = True
 
 
     def __enter__(self):
@@ -31,8 +35,8 @@ class Client(object):
                 self._services[service_name] = {}
             for version_info in service_info.findall('.//service_info:Version', XMLNS):
                 service_version = version_info.attrib['Version'];
-                # TODO: Make findinf WSDL files more 'clever'
-                soap_client = SOAPClient(os.path.join(os.path.dirname(os.path.join(os.path.realpath(__file__))), '../resources/wsdl/r2.1.1/conn/{}.wsdl'.format(service_name)))
+                # TODO: Make finding WSDL files more 'clever'
+                soap_client = SOAPClient(os.path.join(os.path.dirname(os.path.join(os.path.realpath(__file__))), '../resources/wsdl/r2.1.1/conn/{}.wsdl'.format(service_name)), settings=self.soap_settings)
                 self._services[service_name][service_version] = {
                     'name': service_name,
                     'version': service_version,

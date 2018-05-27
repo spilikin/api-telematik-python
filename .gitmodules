@@ -1,0 +1,4 @@
+[submodule "telematik/api/resources/wsdl"]
+	path = telematik/api/resources/wsdl
+	url = git@github.com:spilikin/telematik-interfaces.git
+	branch = master
