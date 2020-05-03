@@ -36,7 +36,7 @@ class Client(object):
             for version_info in service_info.findall('.//service_info:Version', XMLNS):
                 service_version = version_info.attrib['Version'];
                 # TODO: Make finding WSDL files more 'clever'
-                soap_client = SOAPClient(os.path.join(os.path.dirname(os.path.join(os.path.realpath(__file__))), '../resources/wsdl/r2.1.1/conn/{}.wsdl'.format(service_name)), settings=self.soap_settings)
+                soap_client = SOAPClient(os.path.join(os.path.dirname(os.path.join(os.path.realpath(__file__))), '../resources/wsdl/conn/{}.wsdl'.format(service_name)), settings=self.soap_settings)
                 self._services[service_name][service_version] = {
                     'name': service_name,
                     'version': service_version,

@@ -29,13 +29,13 @@ with konnektor_api.connect(host='localhost',
     print ('Got signed result: {}'.format(binascii.hexlify(signed_data)) )
 
     # 384 Bits
-    #challenge=bytearray((string.ascii_letters + string.hexdigits)[0:32], 'UTF-8')
-    #print ('Signing {} with card {}'.format(binascii.hexlify(challenge), card.CardHandle))
-    #signed_data = kon.external_authenticate(card.CardHandle, challenge)
-    #print ('Got signed result: {}'.format(binascii.hexlify(signed_data)) )
+    challenge=bytearray((string.ascii_letters + string.hexdigits)[0:32], 'UTF-8')
+    print ('Signing {} with card {}'.format(binascii.hexlify(challenge), card.CardHandle))
+    signed_data = kon.external_authenticate(card.CardHandle, challenge)
+    print ('Got signed result: {}'.format(binascii.hexlify(signed_data)) )
 
     # 256 Bits
-    #challenge=bytearray((string.ascii_letters + string.hexdigits)[0:32], 'UTF-8')
-    #print ('Signing {} with card {}'.format(binascii.hexlify(challenge), card.CardHandle))
-    #signed_data = kon.external_authenticate(card.CardHandle, challenge)
-    #print ('Got signed result: {}'.format(binascii.hexlify(signed_data)) )
+    challenge=bytearray((string.ascii_letters + string.hexdigits)[0:32], 'UTF-8')
+    print ('Signing {} with card {}'.format(binascii.hexlify(challenge), card.CardHandle))
+    signed_data = kon.external_authenticate(card.CardHandle, challenge)
+    print ('Got signed result: {}'.format(binascii.hexlify(signed_data)) )
