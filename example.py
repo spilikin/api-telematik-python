@@ -10,19 +10,22 @@ with konnektor_api.connect(host='localhost',
     client_system_id='ClientSystemId',
     workplace_id='WorkplaceId') as kon:
 
+    # print all available services
     print (kon.services_info())
 
+    # print all available smartcards
     cards = kon.get_cards()
     for card in cards:
         print('Found Card: card_type: {}, card_handle: {}'.format(card.CardType, card.CardHandle))
 
-    card = cards[0]
 
+    # Trigger the VerifyPin for a random smartcard (first in the list)
+    card = cards[0]
     verify_pin_result = kon.verify_pin(card.CardHandle, konnektor_api.PinType.PIN_SMC)
     print (verify_pin_result)
 
 
-    # 512 Bits
+    # External Authenticate with 512 bits challende
     challenge=bytearray((string.ascii_letters + string.hexdigits)[0:64], 'UTF-8')
     print ('Signing {} with card {}'.format(binascii.hexlify(challenge), card.CardHandle))
     signed_data = kon.external_authenticate(card.CardHandle, challenge)
