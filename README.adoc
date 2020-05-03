@@ -1,0 +1,39 @@
+= Experimental Python API to gematik Konnektor
+
+== Usage
+
+The Project requires `pip` and `vurtualenv` Python-goodies
+
+You will als need the running Conlibre https://github.com/spilikin/conlibre
+
+----
+source activate-env.sh
+python3 example.py
+----
+
+== Example
+
+[source,python]
+----
+import telematik.api.konnektor as konnektor_api
+
+with konnektor_api.connect(host='localhost',
+    port=8080,
+    use_tls=False,
+    mandant_id='MandantId',
+    client_system_id='ClientSystemId',
+    workplace_id='WorkplaceId') as kon:
+
+    # print all available services
+    print (kon.services_info())
+
+    # print all available smartcards
+    cards = kon.get_cards()
+    for card in cards:
+        print('Found Card: card_type: {}, card_handle: {}'.format(card.CardType, card.CardHandle))
+
+    # Trigger the VerifyPin for a random smartcard (first in the list)
+    card = cards[0]
+    verify_pin_result = kon.verify_pin(card.CardHandle, konnektor_api.PinType.PIN_SMC)
+    print (verify_pin_result)
+----
