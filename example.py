@@ -4,11 +4,11 @@ import binascii
 
 
 with konnektor_api.connect(host='localhost',
-    port=9095,
+    port=8080,
     use_tls=False,
-    mandant_id='unknown MandantId',
-    client_system_id='unknown ClientSystemId',
-    workplace_id='unknown WorkplaceId') as kon:
+    mandant_id='MandantId',
+    client_system_id='ClientSystemId',
+    workplace_id='WorkplaceId') as kon:
 
     print (kon.services_info())
 
@@ -29,13 +29,13 @@ with konnektor_api.connect(host='localhost',
     print ('Got signed result: {}'.format(binascii.hexlify(signed_data)) )
 
     # 384 Bits
-    challenge=bytearray((string.ascii_letters + string.hexdigits)[0:32], 'UTF-8')
-    print ('Signing {} with card {}'.format(binascii.hexlify(challenge), card.CardHandle))
-    signed_data = kon.external_authenticate(card.CardHandle, challenge)
-    print ('Got signed result: {}'.format(binascii.hexlify(signed_data)) )
+    #challenge=bytearray((string.ascii_letters + string.hexdigits)[0:32], 'UTF-8')
+    #print ('Signing {} with card {}'.format(binascii.hexlify(challenge), card.CardHandle))
+    #signed_data = kon.external_authenticate(card.CardHandle, challenge)
+    #print ('Got signed result: {}'.format(binascii.hexlify(signed_data)) )
 
     # 256 Bits
-    challenge=bytearray((string.ascii_letters + string.hexdigits)[0:32], 'UTF-8')
-    print ('Signing {} with card {}'.format(binascii.hexlify(challenge), card.CardHandle))
-    signed_data = kon.external_authenticate(card.CardHandle, challenge)
-    print ('Got signed result: {}'.format(binascii.hexlify(signed_data)) )
+    #challenge=bytearray((string.ascii_letters + string.hexdigits)[0:32], 'UTF-8')
+    #print ('Signing {} with card {}'.format(binascii.hexlify(challenge), card.CardHandle))
+    #signed_data = kon.external_authenticate(card.CardHandle, challenge)
+    #print ('Got signed result: {}'.format(binascii.hexlify(signed_data)) )

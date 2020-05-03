@@ -1,3 +1,3 @@
 #!/bin/bash
-virtualenv --python=python3.6 ~/.virtualenv/telematik-api-python
+virtualenv --python=python3 ~/.virtualenv/telematik-api-python
 
